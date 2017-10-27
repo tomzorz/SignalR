@@ -15,7 +15,7 @@ Now the "new" SignalR would be great, except for its client which requires .NET 
 
 ## How
 
-There are three main issues that had to be solved.
+There are three main issues that had to be solved to get the SignalR.Core part running. (You'll notice that I removed most of everything else.)
 
 ### Data protection API
 
