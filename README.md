@@ -1,21 +1,37 @@
-# ASP.NET SignalR 
+**For the original documentation please visit the original repository: [https://github.com/SignalR/SignalR](https://github.com/SignalR/SignalR)**
 
-ASP.NET SignalR is a library for ASP.NET developers that makes it incredibly simple to add real-time web functionality to your applications. What is "real-time web" functionality? It's the ability to have your server-side code push content to the connected clients as it happens, in real-time.
+# The "old" ASP.NET SignalR on .NET Standard 2.0 working inside the "new" ASP.NET
 
-## What can it be used for?
-Pushing data from the server to the client (not just browser clients) has always been a tough problem. SignalR makes 
-it dead easy and handles all the heavy lifting for you.
+## Why?
 
-## Documentation
-See the [documentation](http://asp.net/signalr)
+One of the projects I'm working on requires the following:
 
-## Get it on NuGet!
+- RPC library
+- which is cross platform
+- supports a many clients, including Windows 10 AU (10.14393) because that's the latest Windows version available on the HoloLens
+- preferably easy to use
 
-    Install-Package Microsoft.AspNet.SignalR
+Now the "new" SignalR would be great, except for its client which requires .NET Standard 2.0 support, which as explained above the HoloLens doesn't have at the moment.
 
-## Get a sample on NuGet, straight into your app!
+## How
 
-    Install-Package Microsoft.AspNet.SignalR.Sample
+There are three main issues that had to be solved.
+
+### Data protection API
+
+Easy: there's a NuGet package that reimplements it.
+
+### Making the new middleware model and the old middleware model play nice
+
+Not that hard: we can write an adaptor that takes care of this.
+
+### PerformanceCounters
+
+Now this is where it gets a bit ugly: this is heavily Windows specific by default. But luckily it's possible to yank out some of the offending parts and modify the interface to make it work.
+
+## Tests
+
+We'll be actively using it so I'll update this section if I see any issues.
 	
 ## LICENSE
 [Apache 2.0 License](https://github.com/SignalR/SignalR/blob/master/LICENSE.txt)
@@ -23,22 +39,3 @@ See the [documentation](http://asp.net/signalr)
 ## Contributing
 
 See the [contribution  guidelines](https://github.com/SignalR/SignalR/blob/master/CONTRIBUTING.md)
-
-## Building the source
-
-```
-git clone git@github.com:SignalR/SignalR.git (or https if you use https)
-```
-
-### Windows
-After cloning the repository, run `build.cmd`.
-
-**NOTE:** Opening the solution requires VS 2015.
-
-### Mono
-After cloning the repository, run `make`.
-
-Open Microsoft.AspNet.SignalR.Mono.sln to do development.
-
-## Questions?
-The SignalR team hangs out in the [signalr](http://jabbr.net/#/rooms/signalr) room at on [JabbR](http://jabbr.net/).
