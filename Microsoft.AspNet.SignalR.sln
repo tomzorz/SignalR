@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.AspNet.SignalR.Core", "src\Microsoft.AspNet.SignalR.Core\Microsoft.AspNet.SignalR.Core.csproj", "{2BF0D615-5F56-43EE-A2FC-2CA283C986CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebApplication", "TestWebApplication\TestWebApplication.csproj", "{F399903E-D0FD-48DC-8435-DF3088CCC74A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2BF0D615-5F56-43EE-A2FC-2CA283C986CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BF0D615-5F56-43EE-A2FC-2CA283C986CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BF0D615-5F56-43EE-A2FC-2CA283C986CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F399903E-D0FD-48DC-8435-DF3088CCC74A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F399903E-D0FD-48DC-8435-DF3088CCC74A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F399903E-D0FD-48DC-8435-DF3088CCC74A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F399903E-D0FD-48DC-8435-DF3088CCC74A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

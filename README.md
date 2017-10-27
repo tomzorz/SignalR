@@ -23,7 +23,7 @@ Easy: there's a NuGet package that reimplements it. (This is not part of this re
 
 ### Making the new middleware model and the old middleware model play nice
 
-Not that hard: we can write an adaptor that takes care of this. (This is not part of this repo.)
+Not that hard: we can write an adaptor that takes care of this. (This is now part of this repo as I made a test project.)
 
 ### PerformanceCounters, .NET Standard changes etc...
 
