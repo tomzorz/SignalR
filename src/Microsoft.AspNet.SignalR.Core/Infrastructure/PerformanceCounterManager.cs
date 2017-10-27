@@ -9,8 +9,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
-
-
+using Microsoft.AspNet.SignalR.Core.Replacements;
 #if !UTILS
 using Microsoft.AspNet.SignalR.Tracing;
 #endif
@@ -439,12 +438,13 @@ namespace Microsoft.AspNet.SignalR.Infrastructure
             // and when they are thrown. 
             try
             {
-                var counter = new PerformanceCounter(categoryName, counterName, instanceName, isReadOnly);
+                //var counter = new PerformanceCounter(categoryName, counterName, instanceName, isReadOnly);
 
                 // Initialize the counter sample
-                counter.NextSample();
+                //counter.NextSample();
 
-                return new PerformanceCounterWrapper(counter);
+                //return new PerformanceCounterWrapper(counter);
+                throw new PlatformNotSupportedException();
             }
 #if UTILS
             catch (InvalidOperationException) { return null; }

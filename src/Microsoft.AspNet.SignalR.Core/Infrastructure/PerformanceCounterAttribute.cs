@@ -3,6 +3,7 @@
 
 using System;
 using System.Diagnostics;
+using Microsoft.AspNet.SignalR.Core.Replacements;
 
 namespace Microsoft.AspNet.SignalR.Infrastructure
 {

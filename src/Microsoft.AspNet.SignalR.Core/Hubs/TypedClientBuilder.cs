@@ -37,7 +37,7 @@ namespace Microsoft.AspNet.SignalR.Hubs
             VerifyInterface(typeof(T));
 
             var assemblyName = new AssemblyName(ClientModuleName);
-            AssemblyBuilder assemblyBuilder = AppDomain.CurrentDomain.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run);
+            AssemblyBuilder assemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run);
             ModuleBuilder moduleBuilder = assemblyBuilder.DefineDynamicModule(ClientModuleName);
             Type clientType = GenerateInterfaceImplementation(moduleBuilder);
 
@@ -61,7 +61,7 @@ namespace Microsoft.AspNet.SignalR.Hubs
                 BuildMethod(type, method, proxyField);
             }
 
-            return type.CreateType();
+            return type.CreateTypeInfo();
         }
 
         private static IEnumerable<MethodInfo> GetAllInterfaceMethods(Type interfaceType)

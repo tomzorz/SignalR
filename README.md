@@ -19,15 +19,26 @@ There are three main issues that had to be solved to get the SignalR.Core part r
 
 ### Data protection API
 
-Easy: there's a NuGet package that reimplements it.
+Easy: there's a NuGet package that reimplements it. (This is not part of this repo.)
 
 ### Making the new middleware model and the old middleware model play nice
 
-Not that hard: we can write an adaptor that takes care of this.
+Not that hard: we can write an adaptor that takes care of this. (This is not part of this repo.)
 
-### PerformanceCounters
+### PerformanceCounters, .NET Standard changes etc...
 
 Now this is where it gets a bit ugly: this is heavily Windows specific by default. But luckily it's possible to yank out some of the offending parts and modify the interface to make it work.
+
+**Details:**
+
+- `AppDomain.CurrentDomain.DefineDynamicAssembly(...)` is now `AssemblyBuilder.DefineDynamicAssembly(...)` [TypedLineBuilder.cs:40]
+- `TypeBuilder.CreateType()` is now `TypeBuilder.CreateTypeInfo()` [TypedClientBuilder.cs:64]
+- The Windows specific `CounterSample` type was used in the `IPerformanceCounter` interface and its implementations before removal. [IPerformanceCounter.cs:14] [NoOpPerformanceCounter.cs:49-52]
+- The Windows specific `PerformanceCounterType` enum was used in a lot of places - I rewrote this enum inside the project. [Replacements/PerformanceCounterType.cs] [PerformanceCounterAttribute.cs:6] [PerformanceCounterManager.cs:12]
+- The Windows specific `PerformanceCounter` class was used in the `PerformanceCounterManager` class. I replaced this with an expected `PlatformNotSupportedException` throw. [PerformanceCounterManager.cs:440-774]
+- The `PerformanceCounterWrapper` class wrapped the Windows specific `PerformanceCounter` class, but it's usage was only in the case above this one, so I commented it out.
+- There were duplicate `AssemblyTitle` and `AssemblyDescription` attributes, so I commented them out. [AssemblyInfo.cs:7-8]
+- The `Resources` class had to be modified to load data from the correct resource dictionary. [Resources.Designer.cs:42]
 
 ## Tests
 

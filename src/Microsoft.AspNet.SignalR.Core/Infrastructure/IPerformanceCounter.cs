@@ -11,7 +11,7 @@ namespace Microsoft.AspNet.SignalR.Infrastructure
         long Decrement();
         long Increment();
         long IncrementBy(long value);
-        CounterSample NextSample();
+        //CounterSample NextSample();
         long RawValue { get; set; }
         void Close();
         void RemoveInstance();

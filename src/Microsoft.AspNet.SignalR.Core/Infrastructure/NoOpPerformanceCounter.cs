@@ -46,9 +46,9 @@ namespace Microsoft.AspNet.SignalR.Infrastructure
             
         }
 
-        public CounterSample NextSample()
-        {
-            return CounterSample.Empty;
-        }
+        //public CounterSample NextSample()
+        //{
+        //    return CounterSample.Empty;
+        //}
     }
 }
