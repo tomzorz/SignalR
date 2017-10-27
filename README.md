@@ -39,6 +39,7 @@ Now this is where it gets a bit ugly: this is heavily Windows specific by defaul
 - The `PerformanceCounterWrapper` class wrapped the Windows specific `PerformanceCounter` class, but it's usage was only in the case above this one, so I commented it out.
 - There were duplicate `AssemblyTitle` and `AssemblyDescription` attributes, so I commented them out. [AssemblyInfo.cs:7-8]
 - The `Resources` class had to be modified to load data from the correct resource dictionary. [Resources.Designer.cs:42]
+- The `DefaultJavaScriptProxyGenerator` class had to be modified to load data from the correct resource. [DefaultJavaScriptProxyGenerator.cs:23]
 
 ## Tests
 
