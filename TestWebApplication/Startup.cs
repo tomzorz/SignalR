@@ -54,9 +54,12 @@ namespace TestWebApplication
 
             app.UseOwinAppBuilder(builder =>
             {
-                builder.SetDataProtectionProvider(new AesDataProtectorProvider(new Sha512ManagedFactory(), new Sha256ManagedFactory(), new AesManagedFactory(), "Clairity"));
+                builder.SetDataProtectionProvider(new AesDataProtectorProvider(new Sha512ManagedFactory(), new Sha256ManagedFactory(), new AesManagedFactory(), "randomkey"));
                 builder.RunSignalR(new HubConfiguration());
             });
+
+            var hbt = new HeartbeatTest();
+            Console.WriteLine(hbt.GetType() + " started");
         }
     }
 
